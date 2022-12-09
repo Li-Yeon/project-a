@@ -2,7 +2,7 @@ import React from 'react'
 
 function Layout({children}) {
   return (
-    <div className='mt-16 mx-8'>
+    <div className='mt-20 md:mx-8 mx-4 h-screen'>
         {children}
     </div>
   )

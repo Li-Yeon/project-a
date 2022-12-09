@@ -11,6 +11,9 @@ module.exports = {
       fontFamily: {
         Montserrat: ['"Montserrat"', ...defaultTheme.fontFamily.sans],
         Oswald: ['"Oswald"', ...defaultTheme.fontFamily.sans],
+      },
+      backgroundImage: {
+        'notes-texture': "url('/notes-texture.png')",
       }
     },
   },
