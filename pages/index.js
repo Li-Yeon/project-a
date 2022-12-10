@@ -11,7 +11,11 @@ import CreateToDo from '../components/CreateToDo'
 
 export default function Home() {
 
+  // Notes
   const [notes, setNotes] = useState([]);
+
+  // Open CreateToDo
+  const [isOpenCreateToDo, setIsOpenCreateToDo] = useState(false);
 
   useEffect(() => {
     GetAllNotes();
@@ -36,8 +40,9 @@ export default function Home() {
       </Head>
 
       <div className='flex mb-4'>
-        <button className='bg-[#6B728E] p-1 rounded-md hover:bg-[#474E68]'>
-            <h1 className='font-Montserrat text-sm px-1 text-white'>+ New Note</h1>
+        <button className='bg-[#6B728E] p-1 rounded-md hover:bg-[#474E68]'
+                onClick={()=> setIsOpenCreateToDo(true)}>
+          <h1 className='font-Montserrat text-sm px-1 text-white'>+ New Note</h1>
         </button>
       </div>
 
@@ -48,6 +53,11 @@ export default function Home() {
           })
         }
       </div>
+
+      {isOpenCreateToDo && (
+        <CreateToDo closePopUp={() =>setIsOpenCreateToDo(false)}/>
+      )}
+
     </>
   )
 }
