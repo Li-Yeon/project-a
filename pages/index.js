@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 
 // Utilities
 import axios from 'axios'
+import { useNotesContext } from '../hooks/useNotesContext'
 
 // Components
 import TodoCard from '../components/TodoCard'
@@ -12,7 +13,7 @@ import CreateToDo from '../components/CreateToDo'
 export default function Home() {
 
   // Notes
-  const [notes, setNotes] = useState([]);
+  const {notes, dispatch} = useNotesContext(); 
 
   // Open CreateToDo
   const [isOpenCreateToDo, setIsOpenCreateToDo] = useState(false);
@@ -25,7 +26,7 @@ export default function Home() {
     try {
       const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + 'note/getallnote');
       const result = response.data.data;
-      setNotes(result);
+      dispatch({type: 'SET_NOTES', payload: result})
     } catch (error) {
       console.log(error)
     }

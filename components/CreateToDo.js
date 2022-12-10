@@ -2,8 +2,13 @@ import React from 'react'
 import axios from 'axios';
 import { useState, useEffect } from 'react'
 
+// Utilities
+import { useNotesContext } from '../hooks/useNotesContext'
+
+
 function CreateToDo(props) {
 
+  const {dispatch} = useNotesContext();
   const [title, setTitle] = useState('');
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -22,6 +27,7 @@ function CreateToDo(props) {
       setName('');
       setDescription('');
       setError(false);
+      dispatch({type: 'CREATE_NOTES', payload: response.data.data})
     }
     else {
       setError(true);

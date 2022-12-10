@@ -1,13 +1,20 @@
 import '../styles/globals.css'
+
+// Components
 import Navbar from '../components/Navbar'
 import Layout from '../components/Layout'
+
+// Provider
+import { NoteContextProvider } from '../context/NoteContext'
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <Navbar>
         <Layout>
-          <Component {...pageProps} />
+          <NoteContextProvider>
+            <Component {...pageProps} />
+          </NoteContextProvider>
         </Layout>
       </Navbar>
     </>
