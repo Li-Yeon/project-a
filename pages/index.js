@@ -7,13 +7,13 @@ import axios from 'axios'
 
 // Components
 import TodoCard from '../components/TodoCard'
+import CreateToDo from '../components/CreateToDo'
 
 export default function Home() {
 
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    // Call the GetAllNotes function to fetch the notes
     GetAllNotes();
   }, []);
 
@@ -34,9 +34,16 @@ export default function Home() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="shortcut icon" href="#"></link>
       </Head>
+
+      <div className='flex mb-4'>
+        <button className='bg-[#6B728E] p-1 rounded-md hover:bg-[#474E68]'>
+            <h1 className='font-Montserrat text-sm px-1 text-white'>+ New Note</h1>
+        </button>
+      </div>
+
       <div className='flex gap-4 flex-wrap'>
         {
-          notes.map((item) => {
+          notes && notes.map((item) => {
             return <TodoCard key={item._id} title={item.title} name={item.name} description={item.description} date={item.createdAt} />
           })
         }
