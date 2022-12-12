@@ -50,7 +50,7 @@ export default function Home() {
       <div className='flex gap-4 flex-wrap'>
         {
           notes && notes.map((item) => {
-            return <TodoCard key={item._id} title={item.title} name={item.name} description={item.description} date={item.createdAt} />
+            return <TodoCard key={item._id} title={item.title} name={item.name} description={item.description} date={item.createdAt} id={item._id}/>
           })
         }
       </div>
